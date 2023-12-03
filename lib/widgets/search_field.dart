@@ -52,7 +52,7 @@ class SearchField extends StatelessWidget {
                   keyboardType: inputType,
                   onChanged: onChanged,
                   autofocus: false,
-                  style: const TextStyle(fontSize: 20, color: Colors.black),
+                  style: const TextStyle(fontSize: 20, color: Colors.white),
                   cursorColor: Colors.blueGrey,
                   decoration: InputDecoration(
                     prefixIcon: widget,
