@@ -3,7 +3,9 @@ import 'package:flutter_svg/svg.dart';
 
 import 'package:google_fonts/google_fonts.dart';
 
+import '../methods/nav_method.dart';
 import '../widgets/hourly_item.dart';
+import 'weather_page.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -196,53 +198,58 @@ class _HomePageState extends State<HomePage> {
                               ),
                             ),
                             Stack(
-                                //fit: StackFit.expand,
-                                clipBehavior: Clip.none,
-                                children: [
-                                  Image.asset(
-                                    "assets/images/bottom.png",
-                                    width: double.infinity,
-                                    fit: BoxFit.cover,
-                                  ),
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const SizedBox(
-                                        width: 10,
-                                      ),
-                                      Image.asset("assets/images/Hover.png"),
-                                      Positioned(
-                                          top: 200,
-                                          child: Stack(children: [
-                                            Image.asset(
-                                                "assets/images/Subtract.png"),
-                                            GestureDetector(
-                                              onTap: () {},
-                                              child: Positioned(
-                                                top: 11,
-                                                left: 99,
-                                                child: SvgPicture.asset(
-                                                  "assets/images/Ellipse 1.svg",
-                                                  height: 65,
-                                                  width: 65,
-                                                  semanticsLabel: "Task",
-                                                  colorFilter: const ColorFilter.mode(
-                                                      Colors.white,
-                                                      BlendMode.dst),
-                                                ),
+                              //fit: StackFit.expand,
+                              clipBehavior: Clip.none,
+                              children: [
+                                Image.asset(
+                                  "assets/images/bottom.png",
+                                  width: double.infinity,
+                                  fit: BoxFit.cover,
+                                ),
+                                Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    const SizedBox(
+                                      width: 10,
+                                    ),
+                                    Image.asset("assets/images/Hover.png"),
+                                    Positioned(
+                                        top: 200,
+                                        child: Stack(children: [
+                                          Image.asset(
+                                              "assets/images/Subtract.png"),
+                                          Positioned(
+                                            top: 11,
+                                            left: 99,
+                                            child: GestureDetector(
+                                              onTap: () {
+                                                navigateTo(
+                                                    context, const WeatherPage());
+                                              },
+                                              child: SvgPicture.asset(
+                                                "assets/images/Ellipse 1.svg",
+                                                height: 65,
+                                                width: 65,
+                                                semanticsLabel: "Task",
+                                                colorFilter:
+                                                    const ColorFilter.mode(
+                                                        Colors.white,
+                                                        BlendMode.dst),
                                               ),
                                             ),
-                                          ])),
+                                          ),
+                                        ])),
 
-                                      //SizedBox(width: 200,),
-                                      Image.asset("assets/images/List.png"),
-                                      const SizedBox(
-                                        width: 20,
-                                      ),
-                                    ],
-                                  )
-                                ]),
+                                    //SizedBox(width: 200,),
+                                    Image.asset("assets/images/List.png"),
+                                    const SizedBox(
+                                      width: 20,
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           ],
                         ),
                       ),
