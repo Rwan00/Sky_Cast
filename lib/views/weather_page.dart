@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../widgets/search_field.dart';
+import '../widgets/weather_item.dart';
 
 class WeatherPage extends StatelessWidget {
   const WeatherPage({super.key});
@@ -46,12 +47,17 @@ class WeatherPage extends StatelessWidget {
           ],
         ),
         SearchField(
-          hint: ' Search for a city or airport',
+          hint: 'Search for a city or airport',
           validator: (String? k) {},
           widget: const Icon(
             Icons.search,
             color: Color.fromRGBO(235, 235, 245, 0.6),
           ),
+        ),
+        const SizedBox(height: 32,),
+        const Padding(
+          padding: EdgeInsets.only(left:32.0),
+          child: WeatherItem(),
         )
       ]),
     ));

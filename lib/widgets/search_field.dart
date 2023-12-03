@@ -25,14 +25,14 @@ class SearchField extends StatelessWidget {
     return Container(
       
       margin: const EdgeInsets.only(top: 8),
-      padding: const EdgeInsets.symmetric(horizontal: 16),
+      padding: const EdgeInsets.symmetric(horizontal: 24),
       child: Container(
         decoration: const BoxDecoration(
         gradient: LinearGradient(
           colors: [
             Color.fromRGBO(28, 27, 51, 1),
             Color.fromRGBO(46, 51, 90, 1),
-             Color.fromRGBO(28, 27, 51, 1)
+             Color.fromRGBO(28, 27, 51, 1),
           ],
           begin: Alignment.topLeft,
           end: Alignment.topRight,
