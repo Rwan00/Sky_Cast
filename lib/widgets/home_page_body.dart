@@ -229,7 +229,7 @@ class _HomePageBodyState extends State<HomePageBody> {
         scrollDirection: Axis.horizontal,
         child: Row(
           children: List.generate(
-            6,
+            24,
             (index) => GestureDetector(
               onTap: () {
                 setState(() {
