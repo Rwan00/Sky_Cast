@@ -5,7 +5,7 @@ class WeatherModel {
   final String condition;
   final String maxTemp;
   final String minTemp;
-  final HourForecast hours;
+  final List<HourForecast> hours;
   final String? img;
 
   WeatherModel({
@@ -27,18 +27,30 @@ class WeatherModel {
       condition: json["forecast"]["forecastday"][0]["day"]["condition"]["text"],
       maxTemp: json["forecast"]["forecastday"][0]["day"]["maxtemp_c"],
       minTemp: json["forecast"]["forecastday"][0]["day"]["mintemp_c"],
-      hours: json["forecast"]["forecastday"][0]["day"],
+      hours: (json['forecast']['forecastday'][0]['hour'] as List)
+          .map((hourJson) => HourForecast.fromJson(hourJson))
+          .toList(),
     );
   }
 }
 
 class HourForecast {
   final String time;
-  final String img;
+  final String? img;
   final String avgTemp;
+  final String condition;
   HourForecast({
     required this.time,
-    required this.img,
+    this.img,
     required this.avgTemp,
+    required this.condition,
   });
+
+  factory HourForecast.fromJson(json) {
+    return HourForecast(
+      time: json["time"],
+      avgTemp: json["temp_c"],
+      condition: json["condition"]["text"]
+    );
+  }
 }
