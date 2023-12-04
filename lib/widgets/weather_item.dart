@@ -20,9 +20,9 @@ class _WeatherItemState extends State<WeatherItem> {
         });
       },
       child: AnimatedContainer(
-        duration: const Duration(milliseconds: 400),
-        curve: Curves.easeInCubic,
-        transform: Matrix4.skew(isTapped? 0.08:0,isTapped? 0.03 : 0),
+        duration: const Duration(milliseconds: 600),
+        curve: Curves.easeInOutCirc,
+        transform: Matrix4.skew(isTapped? 0.07:0,isTapped? 0.03 : 0),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
