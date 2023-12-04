@@ -1,10 +1,10 @@
 class WeatherModel {
   final String city;
   final String country;
-  final String avgTemp;
+  final double avgTemp;
   final String condition;
-  final String maxTemp;
-  final String minTemp;
+  final double maxTemp;
+  final double minTemp;
   final List<HourForecast> hours;
   final String? img;
 
@@ -37,7 +37,7 @@ class WeatherModel {
 class HourForecast {
   final String time;
   final String? img;
-  final String avgTemp;
+  final double avgTemp;
   final String condition;
   HourForecast({
     required this.time,
