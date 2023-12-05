@@ -7,6 +7,7 @@ class SearchField extends StatelessWidget {
   final TextInputType? inputType;
   final TextEditingController? controller;
   final Widget? widget;
+  final void Function(String)? onSubmitted;
 
   const SearchField(
       {
@@ -15,6 +16,7 @@ class SearchField extends StatelessWidget {
       this.inputType,
       this.controller,
       this.widget,
+      this.onSubmitted,
       super.key});
 
   @override
@@ -41,6 +43,7 @@ class SearchField extends StatelessWidget {
         height: height * 0.04,
         child: Expanded(
           child: TextField(
+            onSubmitted: onSubmitted,
               controller: controller,
               keyboardType: inputType,
               onChanged: onChanged,

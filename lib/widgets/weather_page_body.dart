@@ -1,5 +1,10 @@
+import 'dart:developer';
+
+import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app/models/weather_model.dart';
+import 'package:weather_app/services/weather_service.dart';
 
 import 'search_field.dart';
 import 'weather_item.dart';
@@ -45,16 +50,23 @@ class WeatherPageBody extends StatelessWidget {
             ),
           ],
         ),
-        const SearchField(
+        SearchField(
           hint: 'Search for a city or airport',
-          widget: Icon(
+          widget: const Icon(
             Icons.search,
             color: Color.fromRGBO(235, 235, 245, 0.6),
           ),
+          onSubmitted: (value) async {
+            WeatherModel weatherModel =
+                await WeatherService(Dio()).getWeather(city: value);
+            log(weatherModel.city);
+          },
         ),
-        const SizedBox(height: 32,),
+        const SizedBox(
+          height: 32,
+        ),
         const Padding(
-          padding: EdgeInsets.only(left:32.0),
+          padding: EdgeInsets.only(left: 32.0),
           child: WeatherItem(),
         )
       ]),
