@@ -51,6 +51,9 @@ class WeatherPageBody extends StatelessWidget {
           ],
         ),
         SearchField(
+          onChanged: (value){
+  
+          },
           hint: 'Search for a city or airport',
           widget: const Icon(
             Icons.search,
@@ -59,7 +62,7 @@ class WeatherPageBody extends StatelessWidget {
           onSubmitted: (value) async {
             WeatherModel weatherModel =
                 await WeatherService(Dio()).getWeather(city: value);
-            log(weatherModel.city);
+            log(weatherModel.condition);
           },
         ),
         const SizedBox(

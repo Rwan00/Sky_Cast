@@ -21,8 +21,8 @@ class _WeatherItemState extends State<WeatherItem> {
       },
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 600),
-        curve: Curves.easeInOutCirc,
-        transform: Matrix4.skew(isTapped? 0.07:0,isTapped? 0.03 : 0),
+        curve: Curves.easeInOutQuad, 
+            transform: Matrix4.skew(isTapped ? 0.1 : 0, isTapped ? 0.1 : 0),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
