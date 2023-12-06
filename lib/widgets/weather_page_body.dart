@@ -60,9 +60,7 @@ class WeatherPageBody extends StatelessWidget {
             color: Color.fromRGBO(235, 235, 245, 0.6),
           ),
           onSubmitted: (value) async {
-            WeatherModel weatherModel =
-                await WeatherService(Dio()).getWeather(city: value);
-            log(weatherModel.condition);
+            
           },
         ),
         const SizedBox(
