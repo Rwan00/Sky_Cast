@@ -8,11 +8,15 @@ import '../models/weather_model.dart';
 import '../services/weather_service.dart';
 
 class WeatherCubit extends Cubit<WeatherStates> {
-  WeatherCubit(initialState) : super(initialState);
+  WeatherCubit() : super(WeatherInitialState());
 
-  getWeather({required String value})async{
-    WeatherModel weatherModel =
-                await WeatherService(Dio()).getWeather(city: value);
-            log(weatherModel.condition);
+  getWeather({required String value}) async {
+    try {
+      WeatherModel weatherModel =
+          await WeatherService(Dio()).getWeather(city: value);
+      emit(WeatherSuccessState());
+    } catch (error) {
+      emit(WeatherErrorState(error.toString()));
+    }
   }
 }
