@@ -9,7 +9,7 @@ class WeatherService {
   final String apiKey = "a3c2b22555e64609990135802230412";
   WeatherService(this.dio);
 
-  Future<WeatherModel> getWeather({required String city}) async {
+   getWeather({required String city}) async {
     try {
       Response response =
           await dio.get("$baseUrl/forecast.json?key=$apiKey&q=$city&days=1");

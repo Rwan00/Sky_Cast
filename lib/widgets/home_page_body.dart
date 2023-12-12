@@ -1,13 +1,15 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app/models/weather_model.dart';
 
 import '../methods/nav_method.dart';
 import '../views/weather_page.dart';
 import 'hourly_item.dart';
 
 class HomePageBody extends StatefulWidget {
-  const HomePageBody({super.key});
+  final WeatherModel weather;
+  const HomePageBody({required this.weather,super.key});
 
   @override
   State<HomePageBody> createState() => _HomePageBodyState();
@@ -35,14 +37,14 @@ class _HomePageBodyState extends State<HomePageBody> {
                     height: 90,
                   ),
                   Text(
-                    "Montreal",
+                    widget.weather.city,
                     style: GoogleFonts.aBeeZee(
                         fontSize: 34,
                         fontWeight: FontWeight.w400,
                         color: Colors.white),
                   ),
                   Text(
-                    "19°",
+                    "${widget.weather.avgTemp}°",
                     style: GoogleFonts.aBeeZee(
                       fontSize: 86,
                       color: Colors.white,
@@ -50,14 +52,14 @@ class _HomePageBodyState extends State<HomePageBody> {
                     textAlign: TextAlign.center,
                   ),
                   Text(
-                    "Mostly Clear",
+                    widget.weather.condition,
                     style: GoogleFonts.aBeeZee(
                         color: const Color.fromRGBO(235, 235, 245, 0.60),
                         fontWeight: FontWeight.w600,
                         fontSize: 20),
                   ),
                   Text(
-                    "H:24° L:18°",
+                    "H:${widget.weather.maxTemp}° L:${widget.weather.minTemp}°",
                     style: GoogleFonts.aBeeZee(
                         color: Colors.white,
                         fontSize: 20,
