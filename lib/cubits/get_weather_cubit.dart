@@ -12,13 +12,23 @@ class WeatherCubit extends Cubit<WeatherStates> {
 
   late WeatherModel weatherModel;
 
-  //static WeatherCubit get(context) => BlocProvider.of(context);
+  static WeatherCubit get(context) => BlocProvider.of(context);
 
   getWeather({required String value}) async {
     try {
-       weatherModel =
-          await WeatherService(Dio()).getWeather(city: value);
+      weatherModel = await WeatherService(Dio()).getWeather(city: value);
       emit(WeatherSuccessState(weatherModel));
+    } catch (error) {
+      emit(WeatherErrorState(error.toString()));
+      log("error");
+    }
+  }
+
+  WeatherModel? weather;
+  void getcurrentWeather() async {
+    try {
+      weather = await WeatherService(Dio()).getWeather(city: "Cairo");
+      emit(WeatherSuccessState(weather!));
     } catch (error) {
       emit(WeatherErrorState(error.toString()));
       log("error");
