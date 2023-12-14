@@ -44,7 +44,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                         color: Colors.white),
                   ),
                   Text(
-                    "${widget.weather.avgTemp}°",
+                    "${widget.weather.avgTemp.round()}°",
                     style: GoogleFonts.aBeeZee(
                       fontSize: 86,
                       color: Colors.white,
@@ -59,7 +59,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                         fontSize: 20),
                   ),
                   Text(
-                    "H:${widget.weather.maxTemp}° L:${widget.weather.minTemp}°",
+                    "H:${widget.weather.maxTemp.round()}° L:${widget.weather.minTemp.round()}°",
                     style: GoogleFonts.aBeeZee(
                         color: Colors.white,
                         fontSize: 20,

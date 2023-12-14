@@ -2,12 +2,13 @@ import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:intl/intl.dart';
 
+import '../methods/get_img_condition.dart';
 import '../models/weather_model.dart';
 
 class HourlyItem extends StatefulWidget {
   final bool isTapped;
   final HourForecast hour;
-  const HourlyItem({super.key, required this.isTapped,required this.hour});
+  const HourlyItem({super.key, required this.isTapped, required this.hour});
 
   @override
   State<HourlyItem> createState() => _HourlyItemState();
@@ -17,8 +18,8 @@ class _HourlyItemState extends State<HourlyItem> {
   @override
   Widget build(BuildContext context) {
     String timeString = widget.hour.time;
-DateTime dateTimeValue = DateTime.parse(timeString);
-String formattedTime = DateFormat('hh a').format(dateTimeValue);
+    DateTime dateTimeValue = DateTime.parse(timeString);
+    String formattedTime = DateFormat('hh a').format(dateTimeValue);
     return Container(
       width: 60,
       height: 146,
@@ -44,16 +45,19 @@ String formattedTime = DateFormat('hh a').format(dateTimeValue);
               fontSize: 15, fontWeight: FontWeight.w600, color: Colors.white),
         ),
         Image.asset(
-          "assets/images/Sun cloud mid rain.png",
+          getImgCondition(widget.hour.condition),
           height: 30,
           width: 30,
         ),
         Text(
-          "${widget.hour.avgTemp}°",
+          "${widget.hour.avgTemp.round()}°",
           style: GoogleFonts.aBeeZee(
               color: Colors.white, fontSize: 20, fontWeight: FontWeight.w400),
         )
       ]),
     );
   }
+
+
+
 }
