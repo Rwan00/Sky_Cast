@@ -1,7 +1,41 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
-class LoadingPage extends StatelessWidget {
+class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});
+
+  @override
+  State<LoadingPage> createState() => _LoadingPageState();
+}
+
+class _LoadingPageState extends State<LoadingPage> with SingleTickerProviderStateMixin{
+
+AnimationController? _controller;
+  Animation<TextStyle>? _animation;
+
+  @override
+  void initState() {
+    super.initState();
+    _controller = AnimationController(
+      vsync: this,
+      duration: const Duration(seconds: 2),
+    )..repeat(reverse: true);
+    _animation = TextStyleTween(
+            begin: const TextStyle(color: Colors.blue,fontWeight: FontWeight.normal,fontSize: 25),
+            end: const TextStyle(color: Colors.pinkAccent,fontWeight: FontWeight.bold,fontSize: 85))
+        .animate(CurvedAnimation(
+      parent: _controller!,
+      curve: Curves.easeInCirc,
+    ));
+  }
+
+@override
+void dispose() {
+  _controller?.dispose();
+  super.dispose();
+
+}
 
   @override
   Widget build(BuildContext context) {
@@ -12,13 +46,21 @@ class LoadingPage extends StatelessWidget {
           fit: BoxFit.cover,
           width: double.infinity,
         ),
-        Center(
-          child: Image.asset(
-                    "assets/images/H.png",
-                    height: 410,
-                    width: 610,
-                  ),
-        )
+        Transform.scale(
+          scale: 0.8,
+          child: AnimatedBuilder(
+            animation: _controller!,  
+            builder: (ctx,child) =>  Transform.rotate(angle: _controller!.value * 2 * pi,child: child),
+          child: Center(
+        child: DefaultTextStyleTransition(
+          style: _animation!,
+          child: const Padding(
+            padding: EdgeInsets.all(8),
+            child: Text("Loading...")
+          ),
+        ),
+      ),
+        ),)
       ],
     );
   }

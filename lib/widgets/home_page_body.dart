@@ -229,6 +229,7 @@ class _HomePageBodyState extends State<HomePageBody> {
   SingleChildScrollView generateList() {
     return SingleChildScrollView(
         scrollDirection: Axis.horizontal,
+        physics: const BouncingScrollPhysics(),
         child: Row(
           children: List.generate(
             24,
@@ -242,6 +243,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                 padding: const EdgeInsets.only(right: 20.0),
                 child: HourlyItem(
                   isTapped: selectedIndex == index ? true : false,
+                  hour: widget.weather.hours[index],
                 ),
               ),
             ),
