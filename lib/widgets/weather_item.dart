@@ -26,7 +26,7 @@ class _WeatherItemState extends State<WeatherItem> {
       child: AnimatedContainer(
         duration: const Duration(milliseconds: 600),
         curve: Curves.easeInOutQuad, 
-            transform: Matrix4.skew(isTapped ? 0.1 : 0, isTapped ? 0.1 : 0),
+            transform: Matrix4.skew(isTapped ? 0.1 : 0, isTapped ? 0 : 0),
         child: Stack(
           clipBehavior: Clip.none,
           children: [
@@ -72,7 +72,7 @@ class _WeatherItemState extends State<WeatherItem> {
                           fontWeight: FontWeight.w400,
                         ),
                       ),
-                      const SizedBox(width: 80,),
+                      const SizedBox(width: 40,),
                       Text(widget.weather.condition,style: GoogleFonts.aBeeZee(color: Colors.white,fontSize: 13,fontWeight: FontWeight.w400,),)
                     ],
                   )

@@ -73,7 +73,15 @@ class WeatherPageBody extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 32.0),
                     child: WeatherItem(weather: state.weatherModel,),
                   )
-                  : Center(child: Text("Search For City"))
+                  :  Column(
+                    children: [
+                      const SizedBox(height: 280,),
+                      Text("Search For City...",style:GoogleFonts.aBeeZee(
+                        color: const Color.fromRGBO(235, 235, 245, 0.60),
+                        fontWeight: FontWeight.w600,
+                        fontSize: 20) ,),
+                    ],
+                  )
             ],
           )
         ]),

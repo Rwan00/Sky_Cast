@@ -1,6 +1,5 @@
  String getImgCondition(String condition) {
   switch (condition) {
-    case "Sunny":
     case "Partly cloudy":
     case "Cloudy":
     case "Overcast":
@@ -45,6 +44,7 @@
     case "Moderate or heavy sleet":
     case "Light sleet showers":
     case "Moderate or heavy sleet showers":
+    case "Sunny":
       return "assets/images/Sun cloud mid rain.png";
       
     case "Patchy light snow":

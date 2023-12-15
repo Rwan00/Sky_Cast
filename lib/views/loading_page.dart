@@ -1,6 +1,7 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 class LoadingPage extends StatefulWidget {
   const LoadingPage({super.key});
@@ -22,8 +23,8 @@ AnimationController? _controller;
       duration: const Duration(seconds: 2),
     )..repeat(reverse: true);
     _animation = TextStyleTween(
-            begin: const TextStyle(color: Colors.blue,fontWeight: FontWeight.normal,fontSize: 25),
-            end: const TextStyle(color: Colors.pinkAccent,fontWeight: FontWeight.bold,fontSize: 85))
+            begin:  GoogleFonts.aBeeZee(color: Colors.blue,fontWeight: FontWeight.normal,fontSize: 25),
+            end:  GoogleFonts.aBeeZee(color: Colors.pinkAccent,fontWeight: FontWeight.bold,fontSize: 85))
         .animate(CurvedAnimation(
       parent: _controller!,
       curve: Curves.easeInCirc,
