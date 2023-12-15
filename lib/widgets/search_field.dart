@@ -41,28 +41,26 @@ class SearchField extends StatelessWidget {
         margin: const EdgeInsets.only(top: 8),
         width: double.infinity,
         height: height * 0.04,
-        child: Expanded(
-          child: TextField(
-            onSubmitted: onSubmitted,
-              controller: controller,
-              keyboardType: inputType,
-              onChanged: onChanged,
-              autofocus: false,
-              style: GoogleFonts.aBeeZee(fontSize: 20, color: Colors.white),
-              cursorColor: Colors.blueGrey,
-              decoration: InputDecoration(
-                contentPadding: const EdgeInsets.symmetric(vertical: 4),
-                border:
-                    OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
-                prefixIcon: widget,
-                hintText: hint,
-                hintStyle: GoogleFonts.aBeeZee(
-                  color: const Color.fromRGBO(235, 235, 245, 0.6),
-                  fontSize: 17,
-                  fontWeight: FontWeight.w400,
-                ),
-              )),
-        ),
+        child: TextField(
+          onSubmitted: onSubmitted,
+            controller: controller,
+            keyboardType: inputType,
+            onChanged: onChanged,
+            autofocus: false,
+            style: GoogleFonts.aBeeZee(fontSize: 20, color: Colors.white),
+            cursorColor: Colors.blueGrey,
+            decoration: InputDecoration(
+              contentPadding: const EdgeInsets.symmetric(vertical: 4),
+              border:
+                  OutlineInputBorder(borderRadius: BorderRadius.circular(10)),
+              prefixIcon: widget,
+              hintText: hint,
+              hintStyle: GoogleFonts.aBeeZee(
+                color: const Color.fromRGBO(235, 235, 245, 0.6),
+                fontSize: 17,
+                fontWeight: FontWeight.w400,
+              ),
+            )),
       ),
     );
   }

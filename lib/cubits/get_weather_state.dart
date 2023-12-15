@@ -25,6 +25,9 @@ class WeatherSearchLoadingState extends WeatherStates {}
 
 
 class WeatherSearchSuccessState extends WeatherStates {
+ final WeatherModel weatherModel;
+
+  WeatherSearchSuccessState(this.weatherModel);
 }
 
 class WeatherSearchErrorState extends WeatherStates {

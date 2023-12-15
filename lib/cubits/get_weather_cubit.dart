@@ -17,12 +17,14 @@ class WeatherCubit extends Cubit<WeatherStates> {
   getWeather({required String value}) async {
     try {
       weatherModel = await WeatherService(Dio()).getWeather(city: value);
-      emit(WeatherSuccessState(weatherModel));
+      emit(WeatherSearchSuccessState(weatherModel));
     } catch (error) {
       emit(WeatherErrorState(error.toString()));
-      log("error");
+      log("error get");
     }
   }
+
+  
 
   WeatherModel? weather;
   void getCurrentWeather() async {
@@ -31,42 +33,7 @@ class WeatherCubit extends Cubit<WeatherStates> {
       emit(WeatherSuccessState(weather!));
     } catch (error) {
       emit(WeatherErrorState(error.toString()));
-      log("error");
+      log("error current");
     }
-  }
-  List<dynamic> search = [];
-  void getSearch(String value) {
-    emit(WeatherSearchLoadingState());
-    search = [];
-
-    DioHelper.getData(
-      url: "forecast.json",
-      query: {"q": value, "apikey": "a3c2b22555e64609990135802230412"},
-    ).then((value) {
-      search = value!.data;
-      emit(WeatherSearchSuccessState());
-    }).catchError((error) {
-      print(error.toString());
-      emit(WeatherSearchErrorState(error.toString()));
-    });
-  }
-}
-
-
-class DioHelper {
-  static Dio? dio;
-
-  static init() {
-    dio = Dio(
-      BaseOptions(
-        baseUrl: "https://api.weatherapi.com/v1/",
-        receiveDataWhenStatusError: true,
-      ),
-    );
-  }
-
-  static Future<Response?> getData(
-      {required String url, required Map<String, dynamic> query}) async {
-    return await dio?.get(url, queryParameters: query);
   }
 }

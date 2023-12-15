@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:weather_app/widgets/weather_item.dart';
 
 import '../cubits/get_weather_cubit.dart';
 import '../cubits/get_weather_state.dart';
-import 'build_list.dart';
+
 import 'search_field.dart';
 
 class WeatherPageBody extends StatelessWidget {
@@ -12,10 +13,7 @@ class WeatherPageBody extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<WeatherCubit, WeatherStates>(
-      listener: (context, state){},
-      builder: (context, state) {
-      var list = WeatherCubit.get(context).search;
+    return BlocBuilder<WeatherCubit, WeatherStates>(builder: (context, state) {
       return Container(
         decoration: const BoxDecoration(
           gradient: LinearGradient(
@@ -35,6 +33,8 @@ class WeatherPageBody extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {
+                   var getWeatherCubit = BlocProvider.of<WeatherCubit>(context);
+                  getWeatherCubit.getCurrentWeather();
                   Navigator.of(context).pop();
                 },
                 icon: const Icon(
@@ -58,21 +58,22 @@ class WeatherPageBody extends StatelessWidget {
                 onSubmitted: (value) async {
                   var getWeatherCubit = BlocProvider.of<WeatherCubit>(context);
                   getWeatherCubit.getWeather(value: value);
-                  Navigator.pop(context);
                 },
                 hint: 'Search for a city or airport',
                 widget: const Icon(
                   Icons.search,
                   color: Color.fromRGBO(235, 235, 245, 0.6),
                 ),
-                onChanged: (value) {
-                  WeatherCubit.get(context).getSearch(value);
-                },
               ),
               const SizedBox(
                 height: 32,
               ),
-              Expanded(child: BuildList(itemsList: list)),
+              (state is WeatherSearchSuccessState)
+                  ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                    child: WeatherItem(weather: state.weatherModel,),
+                  )
+                  : Center(child: Text("Search For City"))
             ],
           )
         ]),
