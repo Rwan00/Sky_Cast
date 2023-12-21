@@ -6,6 +6,7 @@ import 'package:weather_app/models/weather_model.dart';
 import '../methods/nav_method.dart';
 import '../views/weather_page.dart';
 import 'hourly_item.dart';
+import 'seprator.dart';
 
 class HomePageBody extends StatefulWidget {
   final WeatherModel weather;
@@ -143,21 +144,7 @@ class _HomePageBodyState extends State<HomePageBody> {
                                 const SizedBox(
                                   height: 4,
                                 ),
-                                Container(
-                                  height: 3,
-                                  width: 390,
-                                  decoration: const BoxDecoration(
-                                    gradient: LinearGradient(
-                                        colors: [
-                                          Color.fromRGBO(255, 255, 255, 0),
-                                          Color.fromRGBO(255, 255, 255, 1),
-                                          Color.fromRGBO(255, 255, 255, 0),
-                                        ],
-                                        begin: Alignment.topLeft,
-                                        end: Alignment.bottomRight,
-                                        tileMode: TileMode.mirror),
-                                  ),
-                                ),
+                                const Seprator(),
                                 const SizedBox(
                                   height: 24,
                                 ),
@@ -225,6 +212,8 @@ class _HomePageBodyState extends State<HomePageBody> {
       ],
     );
   }
+
+  
 
   SingleChildScrollView generateList() {
     return SingleChildScrollView(
